@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Web App</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <script src="js/script.js" defer></script> <!-- Link to your JavaScript file -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Restaurant!</h1>
+        <img src="logo.png" alt="Restaurant Logo" id="logo" onclick="location.reload();">
+    </header>
+    
+    <main>
+        <div class="tile" id="menuTile">
+            <a href="#" onclick="$dc.loadMenuItems('MENU');">Menu</a>
+        </div>
+        <div class="tile" id="specialsTile">
+            <a href="#">Specials</a>
+        </div>
+        <div class="tile" id="mapTile">
+            <a href="#" onclick="$dc.loadMenuItems('MAP');">Map</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Our Restaurant</p>
+    </footer>
+
+    <script>
+        const categories = ["Lunch", "Dinner", "Sushi", "Desserts", "Beverages"];
+
+        function getRandomCategory() {
+            const randomIndex = Math.floor(Math.random() * categories.length);
+            return categories[randomIndex];
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('specialsTile').onclick = function() {
+                const randomCategoryShortName = getRandomCategory();
+                $dc.loadMenuItems(randomCategoryShortName);
+            };
+        });
+    </script>
+</body>
+</html>
